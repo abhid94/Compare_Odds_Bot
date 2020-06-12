@@ -4,7 +4,7 @@ import requests
 class odds_api:
 
     @staticmethod
-    def api_res():
+    def api_res(input):
 
         api_keys = {}
         with open('secret.json', 'r') as f:
@@ -12,7 +12,11 @@ class odds_api:
 
         # api key 
         api_key = api_keys['odds_api'] 
-        sport_key = 'rugbyleague_nrl'
+
+        if input is "NRL":
+            sport_key = 'rugbyleague_nrl'
+        elif input is "AFL":
+            sport_key ='aussierules_afl'
 
         odds_response = requests.get('https://api.the-odds-api.com/v3/odds', params={
             'api_key': api_key,

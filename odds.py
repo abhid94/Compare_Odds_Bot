@@ -13,7 +13,7 @@ class Odds():
         # based on number send in correct team
         # team = 'Canterbury Bulldogs'
 
-        odds_json =odds_api.api_res()
+        odds_json =odds_api.api_res(self.input)
         odds_json = odds_json['data']
 
         new_odds_compare = odds_compare(odds_json)

@@ -39,8 +39,14 @@ def help(update, context):
 
 def NRL(update, context):
     """Send current NRL odds when command /NRL is issued."""
-    new_odds = Odds(update.message.text)
+    new_odds = Odds("NRL")
     update.message.reply_text(new_odds.get_odds())
+
+def AFL(update, context):
+    """Send current NRL odds when command /NRL is issued."""
+    new_odds = Odds("AFL")
+    update.message.reply_text(new_odds.get_odds())
+
 
 
 def echo(update, context):
@@ -73,6 +79,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("NRL", NRL))
+    dp.add_handler(CommandHandler("AFL", AFL))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
