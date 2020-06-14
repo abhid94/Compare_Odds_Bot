@@ -17,22 +17,24 @@ class odds_compare:
                 "away_odds": []
             }
 
+            result_dict['home'] = i['home_team']
+            result_dict['away'] = [x for x in i['teams'] if x != i['home_team']][0]
+
             home_odds = []
             away_odds = []
             # return all odds
             for book in i['sites']:
-                # print(book['site_nice']+ " - " +str(book['odds']['h2h']))
-                home_odds.append((book['site_nice'], book['odds']['h2h'][0]))
-                away_odds.append((book['site_nice'], book['odds']['h2h'][1]))     
+                if result_dict['home'] == i['teams'][0]:
+                    home_odds.append((book['site_nice'], book['odds']['h2h'][0]))
+                    away_odds.append((book['site_nice'], book['odds']['h2h'][1]))
+                else:
+                    home_odds.append((book['site_nice'], book['odds']['h2h'][1]))
+                    away_odds.append((book['site_nice'], book['odds']['h2h'][0]))     
 
             result_dict['home_odds'] = sorted(home_odds, key=lambda tup: tup[1], reverse=True)
             result_dict['away_odds'] = sorted(away_odds, key=lambda tup: tup[1], reverse=True)
 
-            result_dict['home'] = i['home_team']
-            result_dict['away'] = [x for x in i['teams'] if x != i['home_team']][0]
-
             result.append(result_dict)
-            # print(result_dict)
 
         return result
 

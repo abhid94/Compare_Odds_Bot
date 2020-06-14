@@ -3,7 +3,7 @@ import requests
 
 class odds_api:
 
-    @staticmethod
+
     def api_res(input):
 
         api_keys = {}
