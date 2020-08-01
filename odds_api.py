@@ -17,6 +17,8 @@ class odds_api:
             sport_key = 'rugbyleague_nrl'
         elif input is "AFL":
             sport_key ='aussierules_afl'
+        elif input is "NBA":
+            sport_key ='basketball_nba'
 
         odds_response = requests.get('https://api.the-odds-api.com/v3/odds', params={
             'api_key': api_key,
